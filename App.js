@@ -23,37 +23,12 @@ const instructions = Platform.select({
 
 type Props = {};
 export default class App extends Component<Props> {
-  onPress(){
-    // Works on both iOS and Android
-    Alert.alert(
-      'Alerta de prueba',
-      'Esta es una prueba al presionar el botón',
-      [
-        {text: 'Ask me later', onPress: () => console.log('Ask me later pressed')},
-        {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
-        {text: 'OK', onPress: () => console.log('OK Pressed')},
-      ],
-      { cancelable: false }
-    )
-  }
   render() {
     return (
       <View style={styles.container}>
-      <Button
-        onPress={this.onPress}
-        title="Learn More"
-        color="#841584"
-        accessibilityLabel="Learn more about this purple button"
-      />
-        <Text style={styles.welcome}>
-          Welcome to Prueba :v!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit App.js
-        </Text>
-        <Text style={styles.instructions}>
-          {instructions}
-        </Text>
+        <View style={[styles.box, styles.red]}></View>
+        <View style={[styles.box, styles.green]}></View>
+        <View style={[styles.box, styles.blue]}></View>
       </View>
     );
   }
@@ -62,18 +37,29 @@ export default class App extends Component<Props> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+    flexDirection: 'row',
+    justifyContent: 'space-around',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    flexWrap: 'wrap',
+    backgroundColor: '#F5FCFF'
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
+  box: {
+    width: 150,
+    height:200,
+    backgroundColor: 'black'
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
+  red: {
+    //alignSelf: 'flex-end',
+    //flex: 1,
+    backgroundColor: 'red'
   },
+  green: {
+    //alignSelf: 'flex-start',
+    flex: 1,
+    backgroundColor: 'green'
+  },
+  blue: {
+    //flex: 1,
+    backgroundColor: 'blue'
+  }
 });
