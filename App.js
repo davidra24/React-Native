@@ -5,13 +5,13 @@
  */
 
 import React, { Component } from 'react';
+import Icon from 'react-native-vector-icons/Ionicons';
 import {
   Platform,
   StyleSheet,
   Text,
   View,
-  Button,
-  Alert
+  Image
 } from 'react-native';
 
 const instructions = Platform.select({
@@ -24,11 +24,28 @@ const instructions = Platform.select({
 type Props = {};
 export default class App extends Component<Props> {
   render() {
+    const img = 'https://static.platzi.com/media/files/bowie_a927fdf3-b321-4a5c-99ca-239cc86c57bc.png';
+    const name = 'David Bowie Sensei';
+    const likes = 200;
+    const comments = 140;
     return (
       <View style={styles.container}>
-        <View style={[styles.box, styles.red]}></View>
-        <View style={[styles.box, styles.green]}></View>
-        <View style={[styles.box, styles.blue]}></View>
+        <View style={styles.artistBox}>
+          <Image style={styles.images} source={{uri:img}}/>
+          <View style={styles.info}>
+            <Text style={styles.name}>{name}</Text>
+            <View style={styles.row}>
+              <View style={styles.iconContainer}>
+                <Icon name="ios-heart-outline" size={30} color="gray" />
+                <Text style={styles.count}>{likes}</Text>
+              </View>
+              <View style={styles.iconContainer}>
+                <Icon name="ios-chatbubbles-outline" size={30} color="gray" />
+                <Text style={styles.count}>{comments}</Text>
+              </View>
+            </View>
+          </View>
+        </View>
       </View>
     );
   }
@@ -37,29 +54,37 @@ export default class App extends Component<Props> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    alignItems: 'center',
-    flexWrap: 'wrap',
-    backgroundColor: '#F5FCFF'
+    backgroundColor: 'lightgray',
+    paddingTop: 50
   },
-  box: {
-    width: 150,
-    height:200,
-    backgroundColor: 'black'
+  images: {
+    width:150,
+    height: 150
   },
-  red: {
-    //alignSelf: 'flex-end',
-    //flex: 1,
-    backgroundColor: 'red'
+  artistBox:{
+    backgroundColor: 'white',
+    flexDirection: 'row'
   },
-  green: {
-    //alignSelf: 'flex-start',
+  info: {
     flex: 1,
-    backgroundColor: 'green'
+    flexDirection: 'column',
+    alignItems: 'center'
   },
-  blue: {
-    //flex: 1,
-    backgroundColor: 'blue'
+  name:{
+    fontSize: 20,
+    marginVertical: 15
+  },
+  row:{
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginHorizontal: 30
+  },
+  iconContainer: {
+    flex: 1,
+    alignItems:'center'
+  },
+  count:{
+    color: 'gray'
   }
 });
