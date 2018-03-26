@@ -7,8 +7,10 @@
 import React, { Component } from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {
-  Platform,StyleSheet,View
-
+  Platform,
+  StyleSheet,
+  View,
+  ScrollView
 } from 'react-native';
 import ArtistBox from './ArtistBox';
 
@@ -22,15 +24,13 @@ export default class App extends Component<Props> {
       comments : 140
     }
     return (
-      <View style={styles.container}>
-        <ArtistBox artist = {artist}/>
-        <ArtistBox artist = {artist}/>
-        <ArtistBox artist = {artist}/>
-        <ArtistBox artist = {artist}/>
-        <ArtistBox artist = {artist}/>
-        <ArtistBox artist = {artist}/>
-        <ArtistBox artist = {artist}/>
-      </View>
+      <ScrollView style={styles.container}>
+        {
+          Array(20).fill(artist).map(artist => {
+            return <ArtistBox artist = {artist}/>
+          })
+        }
+      </ScrollView>
     );
   }
 }
