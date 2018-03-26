@@ -14,22 +14,11 @@ import {
   Image
 } from 'react-native';
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' +
-    'Cmd+D or shake for dev menu',
-  android: 'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
-
 type Props = {};
-export default class App extends Component<Props> {
+export default class ArtistBox extends Component<Props> {
   render() {
-    const img = 'https://static.platzi.com/media/files/bowie_a927fdf3-b321-4a5c-99ca-239cc86c57bc.png';
-    const name = 'David Bowie Sensei';
-    const likes = 200;
-    const comments = 140;
+    const { img, name, likes, comments } = this.props.artist;
     return (
-      <View style={styles.container}>
         <View style={styles.artistBox}>
           <Image style={styles.images} source={{uri:img}}/>
           <View style={styles.info}>
@@ -46,24 +35,26 @@ export default class App extends Component<Props> {
             </View>
           </View>
         </View>
-      </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'lightgray',
-    paddingTop: 50
+  artistBox : {
+    margin: 5,
+    backgroundColor: 'white',
+    flexDirection: 'row',
+    shadowColor: 'black',
+    shadowOpacity: .8,
+    shadowOffset: {
+      height: 2,
+      width: -2
+    },
+    elevation: 2
   },
   images: {
     width:150,
     height: 150
-  },
-  artistBox:{
-    backgroundColor: 'white',
-    flexDirection: 'row'
   },
   info: {
     flex: 1,
