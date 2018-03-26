@@ -11,8 +11,7 @@ import {
   StyleSheet,
   Text,
   View,
-  Image,
-  ScrollView
+  Image
 } from 'react-native';
 
 type Props = {};

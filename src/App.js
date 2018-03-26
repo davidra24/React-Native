@@ -10,12 +10,12 @@ import {
   Platform,
   StyleSheet,
   View,
-  ScrollView
+  FlatList
 } from 'react-native';
-import ArtistBox from './ArtistBox';
+import ArtistList from './components/ArtistList';
 
 type Props = {};
-export default class App extends Component<Props> {
+export default class App extends Component{
   render() {
     const artist = {
       img : 'https://static.platzi.com/media/files/bowie_a927fdf3-b321-4a5c-99ca-239cc86c57bc.png',
@@ -23,14 +23,11 @@ export default class App extends Component<Props> {
       likes : 200,
       comments : 140
     }
+    const artists = Array(30).fill(artist);
     return (
-      <ScrollView style={styles.container}>
-        {
-          Array(20).fill(artist).map(artist => {
-            return <ArtistBox artist = {artist}/>
-          })
-        }
-      </ScrollView>
+      <View style={styles.container}>
+        <ArtistList  artists={artists} artist={artist}/>
+      </View>
     );
   }
 }
